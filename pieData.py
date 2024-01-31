@@ -7,7 +7,7 @@ color_values = ['blue', 'orange', 'green', 'red']
 
 explode_values= (0.01, 0.01, 0.01, 0.01)
 plt.figure(figsize=(10,10))
-plt.pie(programming_languages, labels=labels, autopct="%1.1f%%", startangle=90, colors=color_values, explode=explode_values)
+plt.pie(programming_languages, labels=labels, autopct="%1.0f%%", startangle=90, colors=color_values, explode=explode_values)
 plt.title("Programming Languages")
 plt.show()
 
@@ -45,9 +45,3 @@ plt.title("DISTRIBUTION PER COURSE(SEP 2023 INTAKE - ZETECH UNIVERSITY)")
 plt.show()
 
 #commuter travel in nairobi(kenya)
-year1_bus_travel = [22, 10, 8, 24, 18, 17] 
-year2_bus_travel = [13, 45, 3, 5, 35,5]
-
-plt.bar(["bus", "car", "bicycle", "walking", "train", "motorcycle"], year1_bus_travel, year2_bus_travel, color=["red","blue"])
-plt.legend("2023", "2022")
-plt.show()
