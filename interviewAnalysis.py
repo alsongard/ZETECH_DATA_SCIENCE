@@ -19,6 +19,9 @@ print("the boolean values of qualified users")
 print(qualified_bool_users)
 qualified_users_df = data_df[qualified_bool_users]
 print(qualified_users_df)#return only users who classified
+qualified_data = qualified_users_df["class"].count()
+print(f"The number of qualified users are {qualified_data}")
+
 print("\n")
 
 #return only users who did not qualify
@@ -27,10 +30,12 @@ print("the boolean values of unqualified are : ")
 print(unqualified_bool_users)
 unqualified_users_df = data_df[unqualified_bool_users]
 print(unqualified_users_df)
+unqualified_data = unqualified_users_df["class"].count()
+print(f"The number of unqualified users are {unqualified_data}")
 print("\n")
 
-all_data_df = [data_df[unqualified_users]_df, data_df[qualified_users_df]]
-print(all_data_df)
-# plt.pie(all_data_df, labels=["qualified", "unqualified"], colors=["red", "green"])
-
+#plot
+plt.figure(figsize=(5,5))
+plt.title("Employment Data")
+plt.bar(["qualified_users", "unqualified_users"], [qualified_data, unqualified_data], width=0.4, color=["red","green"]) 
 plt.show()
