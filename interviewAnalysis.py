@@ -29,8 +29,8 @@ unqualified_users_df = data_df[unqualified_bool_users]
 print(unqualified_users_df)
 print("\n")
 
-# all_data_df = [data_df[unqualified_users], data_df[qualified_users]]
-# print(all_data_df)
+all_data_df = [data_df[unqualified_users]_df, data_df[qualified_users_df]]
+print(all_data_df)
 # plt.pie(all_data_df, labels=["qualified", "unqualified"], colors=["red", "green"])
 
 plt.show()
