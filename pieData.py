@@ -7,7 +7,7 @@ color_values = ['blue', 'orange', 'green', 'red']
 
 explode_values= (0.01, 0.01, 0.01, 0.01)
 plt.figure(figsize=(10,10))
-plt.pie(programming_languages, labels=labels, autopct="%1.0f%%", startangle=90, colors=color_values, explode=explode_values)
+plt.pie(programming_languages, labels=labels, autopct="%1.1f%%", startangle=90, colors=color_values, explode=explode_values)
 plt.title("Programming Languages")
 plt.show()
 
@@ -20,7 +20,6 @@ plt.pie(grades_data, labels=label_data, autopct="%1.1f%%", startangle=90, colors
 plt.title("Data Science Grades")
 plt.show()
 
-# frequency = list(range(0,600))
 communication_services = 130
 consumer_staples =  130
 energy = 280
@@ -45,3 +44,20 @@ plt.title("DISTRIBUTION PER COURSE(SEP 2023 INTAKE - ZETECH UNIVERSITY)")
 plt.show()
 
 #commuter travel in nairobi(kenya)
+
+year_2023 = [22,13,9,25,18,17]
+year_2022 = [13,47,3,5,33,4]
+categories = ["bus", "car", "bicycle", "walking", "train", "motorcycle"]
+
+#create seperate bars for each data
+x1 = [i - 0.2 for i in range(len(categories))]
+x2 = [i + 0.2 for i in range(len(categories))]
+
+#plt the bar for each year
+plt.bar(x1, year_2023, width=0.4, color="blue")
+plt.bar(x2, year_2022, width=0.4, color="black")
+
+#setting the labels for x-axis
+plt.xticks(range(len(categories)), categories)
+plt.legend(["2023","2022"])
+plt.show()
