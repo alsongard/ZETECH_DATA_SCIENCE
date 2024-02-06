@@ -33,3 +33,16 @@ f is used to represent that the number should be in a floating format.
 One could also set the autopct to represent the data values as integers as shown below:
 ``autopct="%1.0f%%"``
 
+### line graphs
+To plot data using line graphs simply use the ``plot()`` function.
+Example:
+```
+        apples = [10,3,7,6,7]
+        oranges = [1,14,2,5,8]
+
+        years=list(range(2000,2006))
+        plt.plot(years,apples)
+        plt.plot(years,oranges)
+        plt.title("Fruits Production")
+        plt.legend(["apples","oranges"])
+```

@@ -18,3 +18,6 @@ plt.plot(years,oranges)
 plt.title("Fruits Production")
 plt.legend(["apples","oranges"])
 plt.show()
+
+#at(index,"columnName")
+print(data_df.at[3,"Height"])
