@@ -62,3 +62,26 @@ print(myData3)
 print(myData3.head(3))
 
 #wrangling and grouping methods
+#create 2 dictionaries of student_details and fees_details
+student_details = {
+    "Name" : ["Peter", "Joyce", "George", "Phylis", "Moses", "Priscillah", "Eliud", "Veronicah", "John", "Juliet"],
+    "Campus" :["Main","Ruiru","Nairobi","Main","Ruiru","Nairobi","Main","Ruiru","Nairobi","Main"],
+    "IDNO" : [101,102,103,104,105,106,107,108,109,110]
+}
+fee_details = {
+    "IDNO" : [101,102,103,104,105,106,107,108,109,110],
+    "PENDING" : [6000,375,0,7640,3800,0,1250,900,5200,0]
+    
+}
+fee_df = pd.DataFrame(fee_details)
+student_df = pd.DataFrame(student_details)
+print(fee_df)
+#CONFIRMING THE LENGTH OF DICTIONARY ELEMENTS
+print(len(student_details["Name"]))
+print(len(student_details["Campus"]))
+print(len(student_details["IDNO"]))
+print(len(fee_details["PENDING"]))
+#merging use pd.merge(dataFrameObject1,dataFrameObject2, on="COLUMN-NAME")
+
+class_details = pd.merge(student_df,fee_df,on="IDNO")
+print(class_details)
