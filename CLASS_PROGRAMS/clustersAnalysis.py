@@ -39,6 +39,7 @@ conditions = [
     (data_df["mean"] <= 59),
 
 ]
+# print(conditions)
 print(len(conditions))
 grades = [4.0, 3.9, 3.7, 3.3, 3.0, 2.7, 2.3, 2.0, 1.7, 1.0, 0.7, 0.3]
 print(len(grades))
@@ -47,3 +48,25 @@ data_df["grades"] = np.select(conditions, grades)
 print(data_df)
 print("value_counts of grades in the data set:")
 print(data_df["grades"].value_counts)
+
+label_encoder = LabelEncoder()
+#convert gender to numerical values
+data_df["gender"] = label_encoder.fit_transform(data_df["gender"])
+print(data_df)
+
+#create matrix feature
+X = data_df[["gender", "grades"]]
+print(X)
+
+#standardize the data
+scalar = StandardScaler()
+X_std = scalar.fit_transform(X)
+print(X_std)
+print(f"the type of our X_std after standardizations if {type(X_std)} and shape is {X_std.shape}")
+
+# print(X_std.mean(axis=1))
+
+#number of clusters
+nu_clusters = 5
+#applying kmeans clustering
+kmeans = KMeans(n_cluster=nu_cluster,random_state=0)
