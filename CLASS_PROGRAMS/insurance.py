@@ -38,14 +38,9 @@ print("after Kmeans predict")
 print(data_df.head(30))
 
 
-#solution for colors:
-Color = np.array([.5, .6, .7])
-ValsCount = X.shape[0]
-ColorRepeated = np.repeat(np.atleast_2d(Color),ValsCount, axis = 0)
-
 
 # visualization
-plt.figure(figsize=(8,7))
+plt.figure(figsize=(8, 6))
 for i in range(nu_cluster):
     cluster_data = data_df[data_df["cluster"] == i]#return a boolean and then passed to data_df
     plt.scatter(cluster_data["charges"], cluster_data["age"],c=[plt.cm.viridis(i / (nu_cluster - 1))] ,label=f"Cluster {i + 1}")
@@ -53,7 +48,7 @@ for i in range(nu_cluster):
     plt.ylabel("Age")
     plt.title("Cluster of age against charges", fontsize=16, fontweight="bold")
     plt.legend(loc="lower right")
-    plt.show()
+plt.show()
     # print(f"the data in cluster data is ")
     # with pd.option_context("display.max_rows", 600):
     #     print(cluster_data)

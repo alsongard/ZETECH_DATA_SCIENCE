@@ -70,3 +70,16 @@ print(f"the type of our X_std after standardizations is {type(X_std)} and shape 
 nu_clusters = 5
 #applying kmeans clustering
 kmeans = KMeans(n_clusters=nu_clusters,random_state=0)
+data_df["cluster"] = kmeans.fit_predict(X_std)
+# print(data_df.head(50))
+
+plt.figure(figsize=(8,7))
+for i in range(nu_clusters):
+    cluster_data = data_df[data_df["cluster"] == i]
+    plt.scatter(cluster_data["grades"], cluster_data["gender"],c=[plt.cm.viridis(i / (nu_clusters - 1))] ,label=f"Cluster {i + 1}" )
+    plt.xlabel("grades")
+    plt.ylabel("gender")
+    plt.title("Cluster of gender against grades", fontsize=16, fontweight="bold")
+    plt.legend(loc="lower right")
+
+plt.show()
