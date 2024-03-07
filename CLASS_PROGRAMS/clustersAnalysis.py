@@ -62,11 +62,11 @@ print(X)
 scalar = StandardScaler()
 X_std = scalar.fit_transform(X)
 print(X_std)
-print(f"the type of our X_std after standardizations if {type(X_std)} and shape is {X_std.shape}")
+print(f"the type of our X_std after standardizations is {type(X_std)} and shape is {X_std.shape}")
 
 # print(X_std.mean(axis=1))
 
 #number of clusters
 nu_clusters = 5
 #applying kmeans clustering
-kmeans = KMeans(n_cluster=nu_cluster,random_state=0)
+kmeans = KMeans(n_clusters=nu_clusters,random_state=0)

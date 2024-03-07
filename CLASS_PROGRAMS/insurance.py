@@ -9,9 +9,12 @@ data_df = pd.read_csv("../myData/insurance.csv")
 print(data_df)
 # with pd.option_context("display.max_rows",1338):
 #     display(data_df)
+
 #column data to use against insurance charges
 age_df = data_df["age"]
 print(age_df)
+
+#converting categorical data to numerical data using LabelEncoder()
 label_encoder = LabelEncoder()
 data_df["smoker"] = label_encoder.fit_transform(data_df["smoker"])
 data_df["sex"] = label_encoder.fit_transform(data_df["sex"])
@@ -33,14 +36,24 @@ kmeans  = KMeans(n_clusters=nu_cluster,random_state=0)
 data_df["cluster"] = kmeans.fit_predict(X_std)
 print("after Kmeans predict")
 print(data_df.head(30))
+
+
+#solution for colors:
+Color = np.array([.5, .6, .7])
+ValsCount = X.shape[0]
+ColorRepeated = np.repeat(np.atleast_2d(Color),ValsCount, axis = 0)
+
+
 # visualization
 plt.figure(figsize=(8,7))
 for i in range(nu_cluster):
-    cluster_data = data_df[data_df["cluster"] == 1]
-    plt.scatter(cluster_data["charges"], cluster_data["age"],c=plt.cm.viridis(i/(nu_cluster -1)) ,label=f"Cluster {i + 1}")
-
-plt.xlabel("Charges")
-plt.ylabel("Age")
-plt.title("Cluster of age against charges", fontsize=16, fontweight="bold")
-plt.legend(loc="lower right")
-plt.show()
+    cluster_data = data_df[data_df["cluster"] == i]#return a boolean and then passed to data_df
+    plt.scatter(cluster_data["charges"], cluster_data["age"],c=[plt.cm.viridis(i / (nu_cluster - 1))] ,label=f"Cluster {i + 1}")
+    plt.xlabel("Charges")
+    plt.ylabel("Age")
+    plt.title("Cluster of age against charges", fontsize=16, fontweight="bold")
+    plt.legend(loc="lower right")
+    plt.show()
+    # print(f"the data in cluster data is ")
+    # with pd.option_context("display.max_rows", 600):
+    #     print(cluster_data)
