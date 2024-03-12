@@ -52,3 +52,4 @@ plt.show()
     # print(f"the data in cluster data is ")
     # with pd.option_context("display.max_rows", 600):
     #     print(cluster_data)
+c
