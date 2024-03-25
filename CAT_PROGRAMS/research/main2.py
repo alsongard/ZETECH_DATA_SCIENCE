@@ -5,7 +5,10 @@ import urllib.request
 from textblob import TextBlob
 import seaborn as sns
 import numpy as np
+import matplotlib.pyplot as plt
 
+
+#selecting number of rows and read csv file
 biden_df = pd.read_csv("../myData/joebiden.csv", nrows=2300)
 print(biden_df)
 
@@ -14,7 +17,9 @@ print(trump_df)
 trump_df = trump_df[["tweet", "likes", "source", "user_name"]]
 print(trump_df.head(20))
 print(type(trump_df["tweet"]))
-trump_df["tweet"] = trump_df["tweet"].apply(lambda x: str)
+
+# print(type(trump_df["tweet"]))
+#### trump_df["tweet"] = trump_df["tweet"].apply(lambda x: str) do not touch these code
 
 biden_df = biden_df[["tweet", "likes", "source", "user_name"]]
 print(biden_df.head(20))
@@ -51,8 +56,23 @@ biden_df.loc[biden_df.Polarity == 0, "Expression"] = "Neutral"
 print(biden_df)
 
 #need to know isna()
-print(trump_df.isna().sum())
+trump_df = trump_df.dropna(axis=0)
+# print(trump_df.shape)
+
+#
 def graph(reviews):
     grouped_data = reviews.groupby("Expression").count()
     print(grouped_data)
+    Pol_count = list(grouped_data["Polarity"])
+    Exp = list(grouped_data.index)
+    print(Exp)
+    group_list = list(zip(Pol_count, Exp))
+    df = pd.DataFrame(group_list, columns = ["Pol_count", "Exp"])
+    df["color"] = "rgb(14,185,54)"
+    df.loc[df.Exp == "Neutral", "color"] = "rgb(18,29,31)"
+    df.loc[df.Exp == "Negative", "color"] = "rgb(206, 31, 31)"
+
+    plt.bar(df["Pol_count"], df["Exp"])
+    plt.show()
+
 graph(trump_df)
