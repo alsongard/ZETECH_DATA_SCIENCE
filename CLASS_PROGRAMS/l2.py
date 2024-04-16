@@ -12,3 +12,13 @@ plt.title("DISTRIBUTION PER SEMESTER")
 plt.xlabel("X_axis")
 plt.ylabel("Y_axis")
 plt.show()
+
+
+#plotting bars
+x1 = ["BSE", "BBIT", "BSCIT", "BCS", "BCM"]
+y1 = [200, 400, 250, 180, 180]
+plt.bar(x1, y1, label="yellow bar", color="y")
+plt.xlabel("COURSES")
+plt.ylabel("INTAKES PER COURSE")
+plt.legend()
+plt.show()
